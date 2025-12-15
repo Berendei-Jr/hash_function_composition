@@ -1,0 +1,5 @@
+Input, (), (var-4)
+Sha-512, (var-4), (var-0)
+Md5, (var-4), (var-1)
+Xor, (var-1 var-0), (var-2)
+Result, (var-2)
