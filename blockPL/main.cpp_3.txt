@@ -1,0 +1,37 @@
+ // Hash(&input_data, data_size, &kernel_sha512);
+        
+        // 7. Вывод результатов
+        for (size_t i = 0; i < num_data; i++) {
+            // printf("%03d: ", i + iteration*num_data);
+            // printHash((uint8_t*)(&output_data[i*BUFFER_SIZE]), size_data[0]);
+            // if (i + iteration*num_data == 54321)
+            // {
+            //     printHash((uint8_t*)(&output_data[i*BUFFER_SIZE]), BUFFER_SIZE*4);
+            // }
+
+            // is_founded = compareHash((uint8_t*)(&output_data[i*BUFFER_SIZE]), target_hash, MD5_HASH_LEN);
+            is_founded = compareHash((uint8_t*)(&output_data[i*BUFFER_SIZE]), target_hash, size_data[0]);
+            if (is_founded) {
+                printf("result: %d\n", i + iteration*num_data);
+                break;
+            }
+
+        }
+        iteration++;
+    }
+    
+    // Очистка
+    clReleaseKernel(kernel_sha512);
+    clReleaseKernel(kernel_md5);
+    clReleaseProgram(md5_lib);
+    clReleaseProgram(platform_lib);
+    clReleaseProgram(common_lib);
+    clReleaseProgram(main_program);
+    clReleaseProgram(final_program);
+    clReleaseMemObject(buf_input);
+    clReleaseMemObject(buf_output);
+    clReleaseCommandQueue(queue);
+    clReleaseContext(context);
+    
+    return 0;
+}

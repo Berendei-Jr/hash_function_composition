@@ -1,0 +1,5 @@
+#define HASH_BYTE_SIZE 2
+#define BUFFER_SIZE 32
+#define MD5_HASH_LEN 16
+#define SHA512_HASH_LEN 64
+#define SHA256_HASH_LEN 32
