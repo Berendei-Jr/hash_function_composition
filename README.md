@@ -3,32 +3,38 @@
 
 ### Принцип работы:
 #### Шаг 1
-Для начала необходимо воспользоваться GUI утилитой composition_generator для выбора компощиции хеш-функций:
-> python ./generator.py
+Для начала необходимо воспользоваться GUI утилитой `composition_generator` для выбора компощиции хеш-функций:
+```bash
+python ./generator.py
+```
 
-![Full size](https://github.com/Berendei-Jr/hash_function_composition/img/gui.png)
+![Full size](https://github.com/Berendei-Jr/hash_function_composition/blob/main/img/gui.png)
 
 В данном примере мы выбираем композицию
-> md5(input) ^ sha512(input)
+```
+md5(input) ^ sha512(input)
+```
 
-После нажатия кнопки "Скомпилировать программу" утилита определит порядок операция и сгенерирует файл main.cpp
-с необходимой последовательностью операций (пример для данного примера находится в папке opencl_bruteforce_tool)
+После нажатия кнопки "Скомпилировать программу" утилита определит порядок операция и сгенерирует файл `main.cpp`
+с необходимой последовательностью операций (пример для данного примера находится в папке `opencl_bruteforce_tool`)
 
-![Full size](https://github.com/Berendei-Jr/hash_function_composition/img/gui_2.png)
+![Full size](https://github.com/Berendei-Jr/hash_function_composition/blob/main/img/gui_2.png)
 
 #### Шаг 2
 
-Для компиляции и запуска OpenCL брутфорсера настроены файлы opencl_bruteforce_tool/.vscode/launch.json и opencl_bruteforce_tool/.vscode/tasks.json для VS Code
+> Реализация хеш-функций была взята из проекта [Hashcat](https://github.com/hashcat/hashcat)
+
+Для компиляции и запуска OpenCL брутфорсера настроены файлы `opencl_bruteforce_tool/.vscode/launch.json` и `opencl_bruteforce_tool/.vscode/tasks.json` для VS Code
 
 #### Шаг 3
 
-Для оценки прироста производительности от распараллеливания был написан аналогичный брутфорсес на Python с использованием библиотеки hashlib (лежит в папке python_hashlib_bruteforce_tool).
+Для оценки прироста производительности от распараллеливания был написан аналогичный брутфорсес на Python с использованием библиотеки `hashlib` (лежит в папке `python_hashlib_bruteforce_tool`).
 
 Используя послеовательность команд, сгенерирванную GUI генератором, он выполняет аналогичные действия, но в одном потоке
 
 Сравнение производительности наглядно видно на данных графиках:
 
-![Full size](https://github.com/Berendei-Jr/hash_function_composition/img/graphic.png)
+![Full size](https://github.com/Berendei-Jr/hash_function_composition/blob/main/img/graphic.png)
 
 Для проверки вычислялась описанная выше композиция хеш-функций для чисел, являющихся степенями числа 10, начиная с 3. Перебор был последовательный, то есть вычислялись композии натуральных чисел начиная с 1, пока мы не получали искомый хеш.
 
